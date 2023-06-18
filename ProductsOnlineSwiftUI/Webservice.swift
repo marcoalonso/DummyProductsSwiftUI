@@ -19,7 +19,7 @@ struct Webservice {
             }
             //Decodificar
             do {
-                let listProducts = try JSONDecoder().decode(ProductsResponse.self, from: data)
+                let listProducts = try JSONDecoder().decode(ProductModel.self, from: data)
                 completion(listProducts.products)
             } catch {
                 completion(nil)

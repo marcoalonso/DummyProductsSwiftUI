@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct ProductsResponse: Codable {
+struct ProductModel: Codable {
     let products: [Product]
     let total: Int
     let skip: Int
     let limit: Int
 }
 
-struct Product: Codable {
+struct Product: Codable, Identifiable {
     let id: Int
     let title, description: String
     let price: Int
