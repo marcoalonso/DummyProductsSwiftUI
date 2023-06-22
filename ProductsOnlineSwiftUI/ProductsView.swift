@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ProductsView: View {
     @StateObject private var viewModel = ProductViewModel(webservice: Webservice())
     
     var body: some View {
         NavigationView {
             List(viewModel.listProducts) { product in
-                NavigationLink(destination: EmptyView()) {
+                NavigationLink(destination: ImageProductDetailView(product: product)) {
                     HStack {
                         AsyncImage(url: URL(string: product.thumbnail)) { image in
                                    image
@@ -50,13 +50,13 @@ struct ContentView: View {
             }
             .frame(maxHeight: .infinity)
             .listStyle(.inset)
-            .navigationTitle("Products")
+            .navigationBarTitle("Products", displayMode: .inline)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ProductsView()
     }
 }
